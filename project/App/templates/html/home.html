@@ -1,0 +1,90 @@
+{% extends 'html/header.html' %}
+{% block content %}
+{% load static %}
+<html>
+<div class="card mx-auto">
+  <h2 class="text-center text-primary"></h2>
+</div>
+<body class="background-color">
+  <div class="card-body mx-auto">
+    <style>
+        /* Make the image fully responsive */
+        body{
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSwogf6qHRN565Y-vbk_gWvWjQy49HYyFP_A&usqp=CAU');
+          background-repeat: no-repeat;
+          background-size: cover;
+
+      }
+  
+        .carousel-inner img {
+          width: 100%;
+          height: 400px;
+          display: block;
+          div.polaroid {
+            width: 500%;
+            background-color: dark;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 25px;
+            }
+            div.container {
+              text-align: center;
+              padding: 10px 20px;
+            }
+          </style>
+          <div id="demo" class="carousel slide " data-ride="carousel">
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1"></li>
+              <li data-target="#demo" data-slide-to="2"></li>
+              <li data-target="#demo" data-slide-to="3"></li>
+            </ul>
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{% static 'images/start1.jpg' %}" width="150%" height="100px">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'images/decc.png' %}" width="150%" height="100px">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'images/home5.jpg' %}" width="150%" height="100px">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'images/toys1.jpg' %}" width="150%" height="100px">
+              </div>
+              <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row mt-3">
+            <div class="polaroid card col-md-3 mx-auto">
+              <img src="{% static 'images/decor.webp' %}"width=100% height=150px >
+              <div class="container mt-1 mx-auto bg-dark">
+                <a href="#" class="btn btn-success mx-auto">decor</a>
+              </div>
+            </div>
+            <div class="polaroid  card col-md-3 mx-auto">
+              <img src="{% static 'images/clothing.jpg' %}" width=100% height=150px>
+              <div class="container mt-1 mx-auto bg-dark">
+                <a href="#" class="btn btn-success mx-auto">clothing</a>
+              </div>
+            </div>
+            <div class="polaroid  card col-md-3 mx-auto">
+              <img src="{% static 'images/toys.jpg' %}" width=100% height=150px>
+              <div class="container mt-1 mx-auto bg-dark">
+                <a href="#" class="btn btn-success mx-auto">toys</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+    </html>
+    {% endblock %}

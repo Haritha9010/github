@@ -1,0 +1,23 @@
+{% extends 'html/header.html' %}
+{% block title %}Role Request {% endblock %}
+{% block content %}
+<div class="container mt-5">
+	<div class="card col-md-6 mx-auto">
+		<div class="card-body">
+		
+		<form method="POST">
+			{% csrf_token %}
+			<h3>Role Request Form</h3>
+			{% for m in a %}
+				<tr>
+					<td>{{m}}</td>
+				</tr>
+				{% endfor %}
+				<input type="submit" value="Access Role" class="btn btn-success col-sm my-2 ">
+		</form>
+			</div>
+	</div>
+	
+</div>
+
+{% endblock %}

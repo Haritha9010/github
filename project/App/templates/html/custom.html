@@ -1,0 +1,35 @@
+{% extends 'html/header.html' %}
+{% block content %}
+{% load static %}
+<body>
+<div class="container mt-4">
+	<div class="row">
+	<div class="card col-md-4 mt-3 mx-5">
+		 	<form method="post" enctype="multipart/form-data">
+		 		{% csrf_token %}
+		 		<h3 class="bg-dark text-center text-white p-2">Add Details</h3>
+		 		<table class="table table-borderless">
+		 			{% for j in u %}
+		 			<tr>
+		 				<td>{{j}}</td>
+		 			</tr>
+		 			{% endfor %}
+		 		</table>
+		 		<input type="submit" value="send" class="form-control btn btn-success btn-block my-2">
+		 	</form>
+		 </div>
+
+		<div class="card col-md-6 mt-3">
+			<h4 class="card-title">How customisation Works???</h4>
+			<ul class="text-info  mx-8"><li>You send us a rough sketch or images of any outfits you saw on the internet / movie.</li><li>
+We will get in touch with you to discuss more and create the outfit you wish for.</li><li>
+Our appointed stylist shall get back to you with a detailed sketch of your custom garment..</li>
+<li>The design will be send to you for approval. Upon approval and payment confirmation, the design will be sent for production.</li><li>
+Our artisans, craftsmen and the stylist appointed then begin the production process.</li>
+
+</ul>
+</div>
+</div>
+</div>
+		 {% endblock %}
+</body>

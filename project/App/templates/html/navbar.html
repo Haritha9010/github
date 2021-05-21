@@ -1,0 +1,164 @@
+{% load static %}
+<nav class="navbar navbar-expand-md text-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      {% if not user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'hm' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'at' %}">aboutus</a>
+      </li>
+       <li class="dropdown">
+  <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">select category
+  </a>
+
+   <ul class="navbar-nav">
+  <div class="dropdown-menu">
+   
+    {% for i in data %}
+    <li>
+      
+       <a href="{% url 'sr' i.id %}" class="dropdown-item">{{i.cname}}</a>
+  
+     </li>
+      {% endfor %}
+    </ul>
+     </div>
+  
+    </ul>
+      <ul class="navbar-nav ml-auto" style="margin-right:40px"> 
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-cart-plus"></i></a>
+      </li>
+      <li></li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'lgo' %}">Login</a>
+      </li> 
+
+    <ul>
+    {% elif user.role == 1 %}
+    <li class="nav-item">
+        <a class="nav-link navbar-brand" href="#">Creative mart</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand" href="{% url 'cstm' %}">Customise</a>
+      </li>
+    
+    
+  
+    <li class="dropdown">
+  <a type="button" class="nav-link dropdown-toggle navbar-brand" data-toggle="dropdown">select category
+  </a>
+   <ul class="navbar-nav">
+  <div class="dropdown-menu">
+   
+    {% for i in data %}
+    <li>
+      
+       <a href="{% url 'sr' i.id %}" class="dropdown-item">{{i.cname}}</a>
+  
+     </li>
+      {% endfor %}
+    </ul>
+     </div>
+  </ul>
+    <ul class="navbar-nav ml-auto" style="margin-right:120px">
+      <li class="nav-item">
+        <a class="nav-link navbar-brand" href="{% url 'cartdetails' %}">{{count}}<i class="fas fa-cart-plus"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'myorders' %}">Myorders</a>
+      </li>
+    
+    
+        <li class="dropdown">
+  <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">
+    {{user.username}}
+  </a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'cg' %}">change password</a>
+    <a class="dropdown-item" href="{% url 'prf' %}">profile</a>
+    <a class="dropdown-item" href="{% url 'log' %}">logout</a>
+  </div>
+</li>
+</ul>
+{% elif user.is_superuser %}
+ <li class="nav-item">
+<a class="navbar-brand" href="{% url 'shd' %}">Workerdata</a>
+</li>
+<li class="nav-item">
+<a class="navbar-brand" href="{% url 'perm' %}">UserPermissons</a>
+</li>
+<li class="nav-item"></li>
+<a  class ="navbar-brand" href="{% url 'addpro' %}"> AddProduct</a>
+  </ul>
+    <ul class="navbar-nav ml-auto" style="margin-right:120px">
+    
+        <li class="dropdown">
+  <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">
+    {{user.username}}
+  </a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'cg' %}">change password</a>
+    <a class="dropdown-item" href="{% url 'prf' %}">profile</a>
+    <a class="dropdown-item" href="{% url 'log' %}">logout</a>
+  </div>
+</li>
+</ul>
+{% else %}
+<li class="nav-item">
+        <a class="nav-link" href="{% url 'hm' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">aboutus</a>
+      </li>
+      <li class="dropdown">
+  <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">select category
+  </a>
+
+   <ul class="navbar-nav">
+  <div class="dropdown-menu">
+   
+    {% for i in data %}
+    <li>
+      
+       <a href="{% url 'sr' i.id %}" class="dropdown-item">{{i.cname}}</a>
+  
+     </li>
+      {% endfor %}
+    </ul>
+     </div>
+     <ul class="navbar-nav ml-auto" style="margin-right:50px">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'cartdetails' %}">{{count}}<i class="fas fa-cart-plus"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'myorders' %}">Myorders</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'rr' %}">RequestRole</a>
+      </li>
+     
+      
+    </ul>
+      <ul class="navbar-nav ml-auto" style="margin-right:120px">    
+    <ul>
+      <li class="dropdown">
+  <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">
+    {{user.username}}
+  </a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'cg' %}">change password</a>
+    <a class="dropdown-item" href="{% url 'prf' %}">profile</a>
+    <a class="dropdown-item" href="{% url 'log' %}">logout</a>
+  </div>
+</li>
+
+{% endif %}
+   </div>  
+</nav>
+
