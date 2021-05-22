@@ -1,0 +1,30 @@
+{% extends 'html/header.html' %}
+{% block title %}Permissions{% endblock %}
+{% block content %}
+  <div class = "container">
+  <div class = "card col-md-6 mx-auto mt-5 shadow-lg">
+    <div class="card-body">
+			<h3>User Permissions</h3>
+			<table class="table table-borderless">
+				<tr>
+					<th>S.no</th>
+					<th>Username</th>
+					<th>Permissions</th>
+				</tr>
+				{% for j in q %}
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{j.username}}</td>
+
+ 					<td colspan="3">
+						<a href="{% url 'gvpr' j.id %}" class="btn btn-success">Accept</a>
+						</td>
+				</tr>	
+				{% endfor %}
+						</table>
+				
+	</div>
+</div>
+</div>
+
+{% endblock %} 
