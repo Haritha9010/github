@@ -1,0 +1,25 @@
+
+
+{% block content %}
+{% load static %}
+<table class="table table-bordered mydatatable" border="1px">
+<tr>
+<th style="color: blue;padding: 3px">Name</th>
+<th style="color: blue;padding: 3px">Price</th>
+
+</tr>
+{% for i in var %}
+<tr>
+<td style="padding: 5px">{{i.0}}</td>
+<td style="padding: 5px">{{i.1}}</td>
+
+</tr>
+
+
+{% endfor %}
+<tr>
+<td style="padding: 2px">Total</td>
+<td style="padding: 5px">{{sum}}</td>
+</tr>
+</table>
+{% endblock %}

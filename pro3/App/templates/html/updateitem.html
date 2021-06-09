@@ -1,0 +1,13 @@
+{% extends 'html/header.html' %}
+{% block title %}Update item{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="card col-md-4 mt-3 ">
+		 	<form method="post" enctype="multipart/form-data">
+		 		{% csrf_token %}
+		 		{{f.as_p}}
+		 		<input type="submit" class="btn btn-success">
+		 	</form>
+		 </div>
+		</div>
+		{% endblock %}

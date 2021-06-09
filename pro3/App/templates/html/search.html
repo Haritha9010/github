@@ -1,0 +1,54 @@
+{% extends 'html/header.html' %}
+{% block content %}
+{% load static %}
+<body>
+	<style>
+.zoom {
+  transition: transform .2s;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+}
+</style>
+
+<div class="container">
+		<div class="row">
+			{% for j in d %}
+	<div class="card col-md-3 mb-3 my-1 mx-auto">
+		<img class="card-img-fluid zoom" src="{{j.im.url}}" style="height:350px;width:100%">
+		<h5 class="text-center" style="font-size: 15px">{{j.pname}}</h5>
+				<p class="card-text text-dark">Price: Rs{{j.price}}<span>
+			
+		{% if j.quantity != 0 %}
+		<form method="POST" action="{% url 'act' j.id %}">
+			{% csrf_token %}
+			<p class="card-text text-success"> Available
+		<input type="submit" name="" value="Addcart" class="mx-3"></span></p></p>
+	</form>
+			{% else %}
+		<form method="POST" action="">
+			{% csrf_token %}
+			<p class="card-text text-danger">Out of stock</p>
+
+		<input type="submit" name="" value="Addcart" class="btn disabled">
+	</form>
+	{% endif %}
+
+</div>
+
+		{% endfor %}
+		{% include 'html/pagination.html' with page=da %}
+		</div>
+		</div>                 
+  
+
+
+	{% endblock %}
+
+		 		

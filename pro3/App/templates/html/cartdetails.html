@@ -1,0 +1,77 @@
+{% extends 'html/header.html' %}
+{% block content %}
+{% load static %}
+<style type="text/css">
+	.quantity button {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 0;
+    background: #fff}
+
+    .quantity input {
+    border: none;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    text-align: center;
+    width: 50px;
+    font-size: 20px;
+    color: #000;
+    font-weight: 300;
+}
+.quantity {
+    display: flex;
+    justify-content: center;
+}
+
+
+</style>
+<div class="container-fluid">
+
+<form method="POST">
+	{% csrf_token %}
+<table class="table table-hover cart-page">
+	<tr>
+		<th>Sno</th>
+		<th>product name</th>
+		<th>product image</th>
+		<th>Price</th>
+<!-- 				<th>Quantity</th>
+ -->
+		<th>Actions</th>
+	</tr>
+	{% for i in cart %}
+	<tr>
+		<td>{{forloop.counter}}</td>
+		<td>{{i.product.pname}}</td>
+		<td><img src="{{i.product.im.url}}" width="20%" height="100px"></td>
+		<td class="total-price" id="price">{{i.product.price}}</td>
+		  <!-- <td><div class="quantity">
+        <button class="btn minus-btn disabled" type="button">-</button>
+        <input type="text" id="quantity" name="quantity" value="1">
+        <button class="btn plus-btn" type="button">+</button>
+    </div>
+</td> -->
+
+      	<td><a href="{% url 'rem' i.id %}" class="btn btn-info mx-1"> Remove</a><a href="{% url 'prodc' i.product.id %}" class="btn btn-info"> Customise</a></td>
+	</tr>
+	{% endfor %}
+	<tr>
+		<td></td>
+		<td>total</td>
+		<td></td>
+		<td>{{sum}}</td>
+		<td><a href="{% url 'porder' %}" class="btn btn-danger p-1 ">placeorder</a></td>
+	</tr>
+</table>
+<a href="" class="btn btn-success">Continue shopping</a>
+</form>
+</div>
+<script src="{% static 'js/sample.js' %}">
+        
+    </script>
+
+
+
+{% endblock %}
