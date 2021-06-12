@@ -1,0 +1,49 @@
+{% extends 'html/header.html' %}
+{% block content %}
+{% load static %}
+<div class="container-fluid">
+
+<table class="table table-hover">
+	<tr>
+		<th>Sno</th>
+		<th>Product Name</th>
+		<th>Product Image</th>
+		<th>Price</th>
+        <th>Quantity</th>
+		<th>Actions</th>
+	</tr>
+	{% for i in cart %}
+	<tr>
+		<td>{{forloop.counter}}</td>
+		<td>{{i.product.pname}}</td>
+		<td><img src="{{i.product.im.url}}" width="20%" height="100px"></td>
+		<td>{{i.product.price}}</td>
+		  <td><span><form method="POST" action="{% url 'quan' i.id %}">
+			{% csrf_token %}
+			<input type="submit" value="+" class="fas fa-plus-square fa-lg">
+		</form>
+		{{i.quantity}}
+		<form method="POST" action="{% url 'req' i.id %}">
+			{% csrf_token %}
+			<input type="submit" value="-" class="fas fa-minus-square fa-lg">
+	    </form></span>
+	    </td>
+
+      	<td><a href="{% url 'rem' i.id %}" class="btn btn-info mx-1"> Remove</a><a href="{% url 'prodc' i.product.id %}" class="btn btn-info"> Customise</a></td>
+	</tr>
+	{% endfor %}
+	<tr>
+		<td></td>
+		<td>total</td>
+		<td></td>
+		<td>{{sum}}</td>
+		<td></td>
+		<td><a href="{% url 'porder' %}" class="btn btn-danger p-1 ">placeorder</a></td>
+	</tr>
+</table>
+<a href="{% url 'shop' %}" class="btn btn-success">Continue shopping</a>
+</div>
+
+
+
+{% endblock %}

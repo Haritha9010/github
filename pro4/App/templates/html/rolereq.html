@@ -1,0 +1,29 @@
+{% extends 'html/header.html' %}
+{% block title %}Role Request {% endblock %}
+{% block content %}
+<div class="container mt-5">
+	<div class="card col-md-6 mx-auto">
+		<div class="card-body">
+		
+		<form method="POST">
+			{% csrf_token %}
+			<h3>Role Request Form</h3>
+			<input type="text" class="form-control" value={{request.user.username}}>
+			<input type="email" name="email" placeholder="Enter your Mail ID" class="form-control my-2" value="{{request.user.email}}" readonly>
+				
+			<select name="roletype" class="form-control my-2">
+				<option value="Select Your Role">Select Your Role</option>
+  				<option value="Customer">Customer</option>
+  				<option value="Anonymous">Anonymous</option>
+  				</select>
+				
+
+				<input type="submit" value="Access Role" class="btn btn-success col-sm my-2 ">
+			
+		</form>
+			</div>
+	</div>
+	
+</div>
+
+{% endblock %}
