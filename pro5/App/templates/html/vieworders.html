@@ -1,0 +1,32 @@
+{% extends 'html/header.html' %}
+{% block title %}viewuser{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row mt-3">
+		<div class="col-md-2"></div>
+		<div class="col-md-10 card">
+			<table class="table table-striped table-hover">
+				<tr class="bg-dark text-light">
+					<th>S.no</th>
+					<th>userid</th>
+					<th>product name</th>
+					<th>price</th>
+					<th>status</th>
+
+				</tr>
+				{% for i in s %}
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{i.user_id}}</td>
+					<td>{{i.pname}}</td>
+					<td>{{i.price}}</td>
+					{% if i.is_status == 1 %}
+         <td>Delivered</td>
+         {% else %}
+         <td>Pending</td>
+         {% endif %}
+         
+				</tr>
+				{% endfor %}
+			
+{% endblock %}

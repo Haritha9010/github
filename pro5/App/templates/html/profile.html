@@ -1,0 +1,17 @@
+{% extends 'html/header.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class=" card col-md-6 shadow-lg">
+			<h3 class="bg-info text-white shadow-lg text-light border rounded"></h3>
+			<div class="card-body">
+				<h3 style="display: block" class="text-success text-center"> Hai {{user.username}}</h4>
+				<label><h4>Email</h4></label>
+				<h5 class="form-control">  {{user.email}}</h5>
+				<a href="{% url 'myorders' %}">Click here to check your orders</a>
+			</div>
+				<a href="{% url 'updatepf' %}" class="btn btn-info">Update your profile here</a>
+	</div>	
+</div>	
+{% endblock %}
